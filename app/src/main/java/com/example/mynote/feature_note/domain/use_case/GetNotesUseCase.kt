@@ -14,7 +14,7 @@ class GetNotesUseCase (
         noteOrder: NoteOrder = NoteOrder.Date(OrderType.Desending)
     ): Flow<List<Note>> {
         return repository.getNotes().map { notes ->
-            when(noteOrder.orderTyoe) {
+            when(noteOrder.orderType) {
                 is OrderType.Ascending -> {
                     when(noteOrder) {
                         is NoteOrder.Title -> notes.sortedBy { it.title.lowercase() }
